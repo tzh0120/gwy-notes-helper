@@ -90,7 +90,14 @@ function injectButtons() {
                 const questionData = {
                     // ... 您所有的选择器逻辑保持不变 ...
                     questionText: block.querySelector('.question-choice-container .content')?.innerText || '',
-                    options: Array.from(block.querySelectorAll('.choice-radios li')).map(li => { /* ... */ }),
+                    options: Array.from(block.querySelectorAll('.choice-radios li')).map(li => {
+                        // 尝试获取选项字母 (如 'A')，兼容多种可能的class
+                        const letter = li.querySelector('.choice-radio-text, .input-radio')?.innerText.trim() || '';
+                        // 获取选项的描述文字
+                        const text = li.querySelector('.input-text')?.innerText.trim() || '';
+                        // 优雅地拼接，即使字母为空也能正常显示
+                        return letter ? `${letter}. ${text}` : text;
+                    }),
                     correctAnswer: overallInfo.correctAnswer,
                     accuracy: overallInfo.accuracy,
                     commonError: overallInfo.commonError,
@@ -99,6 +106,8 @@ function injectButtons() {
                     source: block.querySelector('[id^="section-source-"] .content')?.innerText || '',
                     userPromptAddition: userPromptAddition
                 };
+
+                console.log("【插件】提取到的题目信息:", questionData);
 
                 // 【核心改动】使用长连接端口进行通信
                 const port = browserAPI.runtime.connect({ name: "summarize-stream" });
