@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "公务员考试智能笔记助手",
+  "version": "1.0",
+  "description": "一键提取题目信息，调用AI总结核心知识点，高效制作个人笔记。",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+      "https://*.fenbi.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.fenbi.com/ti/exam/solution/*"],
+      "js": [
+        "marked.min.js",   
+        "purify.min.js",
+        "content.js"       
+      ],
+      "css": ["styles.css"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "icons": {
+    "48": "icon.png"
+  }
+}

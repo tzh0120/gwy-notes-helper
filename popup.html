@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI笔记助手设置</title>
+    <meta charset="UTF-8">
+    <style>
+        body { 
+            width: 300px; 
+            padding: 15px; 
+            font-family: 'Microsoft YaHei', sans-serif; 
+            font-size: 14px;
+        }
+        h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="password"] {
+            width: 95%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 8px 15px;
+            border: none;
+            background-color: #4285F4;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #3367D6;
+        }
+        #status {
+            margin-top: 10px;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h3>AI笔记助手设置</h3>
+    <label for="apiKey">Deepseek API Key:</label>
+    <input type="password" id="apiKey" placeholder="在此输入您的API密钥">
+    <button id="save">保存密钥</button>
+    <div id="status"></div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

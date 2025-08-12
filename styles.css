@@ -1,0 +1,165 @@
+/* ===================================================================
+ * 插件全局样式 (版本: 最终美化版)
+ * =================================================================== */
+
+/* 1. "一键总结"按钮样式 (保持不变) */
+.ai-summary-btn {
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 10px;
+    margin-bottom: 10px; /* 增加一点底部间距 */
+    transition: background-color 0.3s;
+}
+
+.ai-summary-btn:hover {
+    background-color: #3367D6;
+}
+
+.ai-summary-btn:disabled {
+    background-color: #a0a0a0;
+    cursor: not-allowed;
+}
+
+
+/* 2. AI总结结果容器的全新样式 (核心修改) */
+.ai-summary-container {
+    /* 基础布局与边框 */
+    border: 1px solid #d0d7de; /* 更柔和的边框颜色 */
+    border-radius: 6px;       /* 更圆润的边角 */
+    padding: 20px;            /* 增加内边距，让内容呼吸 */
+    margin-top: 15px;
+    background-color: #f6f8fa; /* 柔和的背景色，比纯白更护眼 */
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04); /* 添加细微的阴影增加质感 */
+
+    /* 字体与行距 (解决您问题的核心) */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"; /* 主流的系统UI字体栈 */
+    font-size: 15px;
+    line-height: 1.7; /* 增加行高，让每行内部的文字更易读 */
+    color: #24292f;   /* 使用深灰色代替纯黑，视觉更柔和 */
+}
+
+/* 3. 容器内部各类元素的精细化样式 */
+
+/* 标题 (例如【核心考点】) */
+.ai-summary-container h1,
+.ai-summary-container h2,
+.ai-summary-container h3,
+.ai-summary-container h4 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+    border-bottom: 1px solid #d8dee4; /* 添加分隔线，类似GitHub风格 */
+    padding-bottom: 0.3em;
+}
+/* 第一个标题不需要上边距 */
+.ai-summary-container h1:first-child,
+.ai-summary-container h2:first-child,
+.ai-summary-container h3:first-child,
+.ai-summary-container h4:first-child {
+    margin-top: 0;
+}
+
+/* 段落 (解决您问题的核心) */
+.ai-summary-container p {
+    margin-top: 0;
+    margin-bottom: 1em; /* 这是段落间的标准间距，比浏览器默认的要小 */
+}
+
+/* 加粗文本 */
+.ai-summary-container strong {
+    font-weight: 600;
+    color: #111;
+}
+
+/* 列表 (ul, ol) */
+.ai-summary-container ul,
+.ai-summary-container ol {
+    padding-left: 2em; /* 标准的列表缩进 */
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+.ai-summary-container li {
+    margin-bottom: 0.3em; /* 列表项之间的细微间距 */
+}
+
+/* 行内代码块 (`code`) */
+.ai-summary-container code {
+    background-color: rgba(175, 184, 193, 0.2); /* 代码块背景色 */
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    border-radius: 6px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+/* 引用块 (blockquote) */
+.ai-summary-container blockquote {
+    margin-left: 0;
+    padding: 0 1em;
+    color: #57606a;
+    border-left: 0.25em solid #d0d7de;
+}
+
+
+/* 4. "复制"按钮样式 (保持不变) */
+.copy-btn {
+    position: absolute;
+    top: 10px; /* 调整位置以适应新的内边距 */
+    right: 10px;
+    background-color: #f6f8fa;
+    border: 1px solid rgba(27, 31, 36, 0.15);
+    color: #57606a;
+    cursor: pointer;
+    padding: 3px 10px;
+    font-size: 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+.copy-btn:hover {
+    background-color: #f3f4f6;
+}
+
+
+/* 最终版本：包裹按钮和输入框的容器 */
+.ai-controls-container {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-end; /* 核心：底边对齐 */
+    gap: 8px;
+}
+
+/* 最终版本：用户输入框样式 */
+.ai-user-prompt {
+    flex-grow: 1; /* 【新增】让输入框占据所有剩余空间 */
+    /* ... 其他样式保持不变 ... */
+    width: auto; /* 移除固定的宽度，让flex布局接管 */
+    padding: 8px 10px;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.ai-user-prompt:focus {
+    border-color: #4285F4;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+/* 最终版本：按钮样式 */
+.ai-summary-btn {
+    /* 移除之前的对齐设置，因为父容器已经处理好了 */
+    /* align-self: flex-end; */ 
+    margin: 0;
+    flex-shrink: 0; /* 防止按钮被压缩 */
+}
